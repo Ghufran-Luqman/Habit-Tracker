@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>To-do List Website</title>
+    <link rel="stylesheet" href="/static/main.css">
+</head>
+<body>
+    <h1>To-do List Website</h1>
+
+    <form action="/submit" method="POST">
+        <input id="inputs" name="inputs" placeholder="Enter task..." autofocus required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <form method="POST" action="/reset">
+        <button type="submit" class="reset">Reset</button>
+    </form>
+
+    <ul>
+    {% for task in tasks %}
+        {% if states[loop.index0] == 0 %}
+            <li>{{ task }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form></li>
+        {% elif states[loop.index0] == 1 %}
+            <li class="ticked">{{ task }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form></li>
+        {% else %}
+            <script>
+                alert("Error")
+            </script>
+        {% endif %}
+    {% endfor %}
+    </ul>
+</body>

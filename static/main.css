@@ -1,0 +1,17 @@
+.reset {
+    margin-top: 10px;
+    font-family: monospace;
+}
+
+li {
+    display: flex;
+    align-items: center;
+}
+
+.tickbox {
+    margin-left: 10px;
+}
+
+.ticked {
+    text-decoration: line-through;
+}
