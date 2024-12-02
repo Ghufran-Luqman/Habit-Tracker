@@ -7,7 +7,7 @@
     <h1>To-do List Website</h1>
 
     <form action="/submit" method="POST">
-        <input id="inputs" name="inputs" placeholder="Enter task..." autofocus required>
+        <input id="inputs" autocomplete="off" name="inputs" placeholder="Enter task..." autofocus required>
         <button type="submit">Submit</button>
     </form>
 
@@ -15,12 +15,18 @@
         <button type="submit" class="reset">Reset</button>
     </form>
 
+    {% if alert == "alrthere" %}
+    <script>
+        alert("You have already added that task!!!")
+    </script>
+    {% endif %}
+
     <ul>
     {% for task in tasks %}
-        {% if states[loop.index0] == 0 %}
-            <li>{{ task }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form></li>
-        {% elif states[loop.index0] == 1 %}
-            <li class="ticked">{{ task }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form></li>
+        {% if states[loop.index0][0] == 0 %}
+            <li>{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form></li>
+        {% elif states[loop.index0][0] == 1 %}
+            <li class="ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form></li>
         {% else %}
             <script>
                 alert("Error")
