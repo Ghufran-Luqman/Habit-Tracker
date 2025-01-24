@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <head>
-    <title>To-do List Website</title>
+    <title>Habit Tracker</title>
     <link rel="stylesheet" href="/static/main.css">
 </head>
 <body>
-    <h1>To-do List Website</h1>
+    <div class="upscale">
+    <h1 class="text">Habit Tracker</h1>
 
     <form action="/submit" method="POST">
-        <input id="inputs" autocomplete="off" name="inputs" placeholder="Enter task..." autofocus required>
-        <button type="submit">Submit</button>
+        <input id="inputs" autocomplete="off" name="inputs" placeholder="Enter habit..." autofocus required>
+        <button type="submit" class="btnbg"><span class="text">Submit</span></button>
     </form>
 
     <form method="POST" action="/reset">
-        <button type="submit" class="reset">Reset</button>
+        <button type="submit" class="reset btnbg"><span class="text">Reset</span></button>
     </form>
 
     {% if alert == "alrthere" %}
@@ -24,9 +25,9 @@
     <ul>
     {% for task in tasks %}
         {% if states[loop.index0][0] == 0 %}
-            <li>{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form></li>
+            <li class="text">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form></li>
         {% elif states[loop.index0][0] == 1 %}
-            <li class="ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form></li>
+            <li class="text ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form></li>
         {% else %}
             <script>
                 alert("Error")
@@ -34,4 +35,5 @@
         {% endif %}
     {% endfor %}
     </ul>
+    </div>
 </body>
