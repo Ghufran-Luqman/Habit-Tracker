@@ -22,7 +22,7 @@ li {
     position: absolute;
     left: 39%;
     border: 0px solid green;
-    transform: scale(1.7);
+    transform: scale(1.6);
     transform-origin: top left;
 }
 
