@@ -42,14 +42,18 @@ async def handle_input(request: Request, inputs: str = Form(...)):
         try:
             c.execute("SELECT status FROM tasks WHERE name=?", (inputs,))
             if c.fetchall()[0][0] == 'removed':
+                print("A")
                 #change the state back to active
                 c.execute("UPDATE tasks SET status = 'active' WHERE name=?", (inputs,))
+                print("A")
                 #remove it from the global list
                 if 'remove' in request.session:
                     request.session['remove'].remove(inputs)
+                    print("A")
             else:
                 alert = "alrthere"
         except Exception as e2:
+            print("b")
             alert = "alrthere"
     conn.commit()
     conn.close()
@@ -98,6 +102,8 @@ async def remove(request: Request, remove: str=Form(...)):
         request.session['remove'] = []
     request.session['remove'].append(remove)
     if len(request.session['remove']) > 10:#size of this is limited to 10 so does not cause excessive memory usage
+        firstitem = request.session['remove'][0]
+        c.execute("DELETE FROM tasks WHERE name=?", (firstitem,))
         del request.session['remove'][0]
     c.execute("UPDATE tasks SET status = 'removed' WHERE name=?", (remove,))
     conn.commit()
