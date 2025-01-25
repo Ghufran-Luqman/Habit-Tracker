@@ -8,12 +8,12 @@
     <h1 class="text">Habit Tracker</h1>
 
     <form action="/submit" method="POST">
-        <input id="inputs" autocomplete="off" name="inputs" placeholder="Enter habit..." autofocus required>
-        <button type="submit" class="btnbg"><span class="text">Submit</span></button>
+        <input id="inputs" autocomplete="off" class="stylishsearch" name="inputs" placeholder="Enter habit..." autofocus required>
+        <button type="submit" class="sylishbtn btnbg"><span class="text">Submit</span></button>
     </form>
 
     <form method="POST" action="/reset">
-        <button type="submit" class="reset btnbg"><span class="text">Reset</span></button>
+        <button type="submit" class="sylishbtn reset btnbg"><span class="text">Reset</span></button>
     </form>
 
     {% if alert == "alrthere" %}
@@ -25,9 +25,10 @@
     <ul>
     {% for task in tasks %}
         {% if states[loop.index0][0] == 0 %}
-            <li class="text">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form><form method="POST" action="/remove"><button name="remove" class="tickbox" value="{{ task }}">Remove</button></form></li>
+            <li class="text">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="sylishbtn tickbox" value="{{ task }}"><span class="text">+</span></button></form><form method="POST" action="/remove"><button name="remove" class="sylishbtn tickbox" value="{{ task }}"><span class="text">Remove</span></button></form></li>
+    </form>
         {% elif states[loop.index0][0] == 1 %}
-            <li class="text ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form><form method="POST" action="/remove"><button name="remove" class="tickbox" value="{{ task }}">Remove</button></form></li>
+            <li class="text ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="sylishbtn tickbox" value="{{ task }}"><span class="text">✓</span></button></form><form method="POST" action="/remove"><button name="remove" class="sylishbtn tickbox" value="{{ task }}"><span class="text">Remove</span></button></form></li>
         {% else %}
             <script>
                 alert("Error")
@@ -35,5 +36,10 @@
         {% endif %}
     {% endfor %}
     </ul>
+    {% if notthere == False %}
+    <form action="/undo" method="POST">
+        <button class="sylishbtn undo"><span class="text">Undo last removal</span></button>
+    </form>
+    {% endif %}
     </div>
 </body>

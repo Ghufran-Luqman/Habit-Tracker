@@ -22,7 +22,7 @@ li {
     position: absolute;
     left: 39%;
     border: 0px solid green;
-    transform: scale(1.35);
+    transform: scale(1.7);
     transform-origin: top left;
 }
 
@@ -37,4 +37,62 @@ body {
 
 .btnbg {
     background-color: #7d7d7d;
+}
+
+.undo {
+    position: absolute;
+    top: 130px;
+    left: 70px;
+}
+
+.sylishbtn {
+    height: 21px;
+    border-style: solid;
+    border-radius: 9999999px;
+    border-color: transparent;
+    border-width: 1px;
+    background-color: #7d7d7d;
+    outline: none;
+    box-shadow: 0 0 10px rgba(64, 201, 117, 0.3);
+    transition: border-color 0.3s;
+    transition-delay: 35ms;
+    pointer-events: auto;
+}
+.sylishbtn:hover {
+    border-color: #02c94f;
+    border-width: 1px;
+}
+
+.sylishbtn:focus {
+    border-color: #02c94f;
+    border-width: 1px;
+}
+
+.stylishsearch {
+    border-style: solid;
+    border-radius: 9999999px;
+    border-color: transparent;
+    border-width: 1px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(64, 201, 117, 0.3);
+    text-align: center;
+    transition: border-color 0.3s;
+    transition-delay: 35ms;
+    pointer-events: auto;
+    height: 30px;
+}
+
+.stylishsearch:hover {
+    border-color: #02c94f;
+    border-width: 1px;
+}
+
+.stylishsearch:focus {
+    border-color: #02c94f;
+    border-width: 1px;
+}
+
+.stylishsearch:active {
+    border-color: transparent;
+    transition: border-color 0.05s;
 }

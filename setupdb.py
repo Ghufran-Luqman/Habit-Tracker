@@ -8,8 +8,6 @@ c.execute("""CREATE TABLE tasks (
           state INTEGER DEFAULT 0
           )""")
 '''
-c.execute("SELECT name FROM tasks ORDER BY id")
-t = c.fetchall()
-print(t)
+
 conn.commit()
 conn.close()
