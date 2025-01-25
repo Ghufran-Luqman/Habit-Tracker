@@ -3,6 +3,7 @@ A website application built with FastAPI and SQLite designed to help you stay co
 It has features such as undo-ing your 10 recently deleted habits (not from pressing the reset button but from pressing the remove button). The recently deleted habits are stored in a list.
 This undo button only appears if there are any recently deleted habits. Here, the habit 'Code' was removed.
 ![image](https://github.com/user-attachments/assets/97b483c5-a0dc-443b-9120-f562f04a60d8)
+
 If the user enters 'Code' again, this is removed from the list and simply placed back.
 
 To run, make sure your environment is set-up with everything in fastAPI (`pip install fastapi[all]`) and SQLite, and run `uvicorn main:app --reload`.
