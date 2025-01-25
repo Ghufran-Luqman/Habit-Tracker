@@ -7,4 +7,4 @@ This undo button only appears if there are any recently deleted habits. Here, th
 
 If the user enters 'Code' again, this is removed from the list and simply placed back.
 
-To run, make sure your environment is set-up with everything in fastAPI (`pip install fastapi[all]`) and SQLite, and run `uvicorn main:app --reload`.
+To run, make sure your environment is set-up with everything in fastAPI (`pip install fastapi[all]`) and SQLite, then run `uvicorn main:app --reload`.
