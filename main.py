@@ -11,6 +11,7 @@ templates = Jinja2Templates(directory="templates")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
+
 @app.get("/", response_class=HTMLResponse)
 async def home(request: Request, alert: str = None):
     conn = sqlite3.connect("tasks.db")
@@ -25,13 +26,14 @@ async def home(request: Request, alert: str = None):
 
 @app.post("/submit", response_class=HTMLResponse)
 async def handle_input(request: Request, inputs: str = Form(...)):
-    conn = sqlite3.connect("tasks.db")
+    conn = sqlite3.connect("tasks.db",)
     c = conn.cursor()
     alert = ""
-    try:
-        c.execute("INSERT INTO tasks (name) VALUES (?)", (inputs,))
-    except:
-        alert = "alrthere"
+    #try:
+    c.execute("SELECT * FROM tasks")
+    c.execute("INSERT INTO tasks (name) VALUES (?)", (inputs,))
+    #except:
+        #alert = "alrthere"
     conn.commit()
     conn.close()
     return RedirectResponse(url=f"/?alert={alert}", status_code=303)
@@ -63,7 +65,18 @@ async def ticking(tickbox: str=Form(...)):
         conn.commit()
         conn.close()
     else:
-        print("idk whats going on breh this program twaeaking fr")
+        print("errorr")
         conn.commit()
         conn.close()
+    return RedirectResponse("/", status_code=303)
+
+@app.post("/remove", response_class=HTMLResponse)
+async def remove(remove: str=Form(...)):
+    conn = sqlite3.connect("tasks.db")
+    c = conn.cursor()
+    remove = ast.literal_eval(remove)
+    remove = remove[0]
+    c.execute("DELETE FROM tasks WHERE name=?", (remove,))
+    conn.commit()
+    conn.close()
     return RedirectResponse("/", status_code=303)

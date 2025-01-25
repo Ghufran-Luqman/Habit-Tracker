@@ -25,9 +25,9 @@
     <ul>
     {% for task in tasks %}
         {% if states[loop.index0][0] == 0 %}
-            <li class="text">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form></li>
+            <li class="text">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">+</button></form><form method="POST" action="/remove"><button name="remove" class="tickbox" value="{{ task }}">Remove</button></form></li>
         {% elif states[loop.index0][0] == 1 %}
-            <li class="text ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form></li>
+            <li class="text ticked">{{ task[0] }}<form method="POST" action="/ticking"><button name="tickbox" class="tickbox" value="{{ task }}">✓</button></form><form method="POST" action="/remove"><button name="remove" class="tickbox" value="{{ task }}">Remove</button></form></li>
         {% else %}
             <script>
                 alert("Error")
