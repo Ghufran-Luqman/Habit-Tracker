@@ -4,12 +4,18 @@ from fastapi.responses import HTMLResponse, RedirectResponse
 from starlette.requests import Request
 from fastapi.staticfiles import StaticFiles
 from starlette.middleware.sessions import SessionMiddleware
+from dotenv import load_dotenv
+import os
 import sqlite3
 import ast
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-app.add_middleware(SessionMiddleware, secret_key="AJs2?]*Zp~u,Ux>Ct{3hf5k[MyB4H#7/c`S!r:'KPeY=Gzm")
+load_dotenv()
+secret_key=os.getenv("SECRET_KEY")
+if not secret_key:
+    raise ValueError("secret key isn't in the environment")
+app.add_middleware(SessionMiddleware, secret_key=secret_key)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
