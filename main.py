@@ -55,7 +55,7 @@ async def handle_input(request: Request, inputs: str = Form(...)):
                 #remove it from the global list
                 if 'remove' in request.session:
                     request.session['remove'].remove(inputs)
-                    print("A")
+                    print("cb")
             else:
                 alert = "alrthere"
         except Exception as e2:
