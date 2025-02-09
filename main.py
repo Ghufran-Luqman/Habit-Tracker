@@ -48,7 +48,7 @@ async def handle_input(request: Request, inputs: str = Form(...)):
         try:
             c.execute("SELECT status FROM tasks WHERE name=?", (inputs,))
             if c.fetchall()[0][0] == 'removed':
-                print("A")
+                print("c")
                 #change the state back to active
                 c.execute("UPDATE tasks SET status = 'active' WHERE name=?", (inputs,))
                 print("A")
