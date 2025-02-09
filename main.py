@@ -51,7 +51,7 @@ async def handle_input(request: Request, inputs: str = Form(...)):
                 print("c")
                 #change the state back to active
                 c.execute("UPDATE tasks SET status = 'active' WHERE name=?", (inputs,))
-                print("A")
+                print("ab")
                 #remove it from the global list
                 if 'remove' in request.session:
                     request.session['remove'].remove(inputs)
