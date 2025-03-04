@@ -11,11 +11,7 @@ import ast
 
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
-load_dotenv()
-secret_key=os.getenv("SECRET_KEY")
-if not secret_key:
-    raise ValueError("secret key isn't in the environment")
-app.add_middleware(SessionMiddleware, secret_key=secret_key)
+app.add_middleware(SessionMiddleware, secret_key="AJs2?]*Zpf}-a+g4>Ct{3hf5k[Myg4gf@#/*-j+gh5/c`S!r:'KPeY=Gzm")
 app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
